@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- jdbc连接配置文件 -->
+	<context:property-placeholder location="classpath:database-config.properties" ignore-unresolvable="true"/>
+    <!-- 数据源 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          destroy-method="close">
+      		<property name="url" value="${dataSource.url}" />
+		<property name="username" value="${dataSource.username}" />
+		<property name="password" value="${dataSource.password}" />
+		<property name="initialSize" value="${dataSource.initialSize}" />
+		<property name="minIdle" value="${dataSource.minIdle}" />
+		<property name="maxActive" value="${dataSource.max_active}" />
+		<property name="maxWait" value="${dataSource.max_wait}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${dataSource.timeBetweenEvictionRunsMillis}" />
+		<property name="minEvictableIdleTimeMillis" value="${dataSource.minEvictableIdleTimeMillis}" />
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<property name="removeAbandoned" value="${dataSource.removeAbandoned}" />
+		<property name="removeAbandonedTimeout" value="${dataSource.removeAbandonedTimeout}" />
+		<property name="logAbandoned" value="${dataSource.logAbandoned}" />
+		<property name="poolPreparedStatements" value="${dataSource.pool_prepared_statements}" />
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+		<property name="defaultAutoCommit" value="${dataSource.default_auto_commit}" />
+		<property name="filters" value="${dataSource.filters}" />
+    </bean>
+
+    <!-- mybatis config -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="configLocation" value="classpath:mybatis-settings.xml"/>
+    </bean>
+    <!-- mybatis interface path -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.net.zhaozhiwen.demo.persistence.dao"/>
+    </bean>
+
+    <!-- 事务管理 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:annotation-driven/>
+
+
+    <!-- 组件扫描 -->
+    <context:component-scan base-package="cn.net.zhaozhiwen.demo.persistence.dao"/>
+    
+    </beans>

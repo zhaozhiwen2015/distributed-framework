@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  
+
+  <localRepository>D:\apache-maven-3.3.3\.m2\repository</localRepository>
+  <interactiveMode>true</interactiveMode>
+  <offline>false</offline>
+
+  <pluginGroups>
+    <pluginGroup>org.mortbay.jetty</pluginGroup>
+	<pluginGroup>org.jenkins-ci.tools</pluginGroup>
+  </pluginGroups>
+
+ 
+  <servers>
+    <server>
+      <id>nexus-releases</id>
+      <username>admin</username>
+      <password>admin123</password>
+    </server>
+    <server>
+      <id>nexus-snapshots</id>
+      <username>admin</username>
+      <password>admin123</password>
+    </server>
+
+  </servers>
+
+
+  <mirrors>
+
+  </mirrors>
+
+  <profiles>
+    <profile>
+      <id>edu</id>
+      <activation>
+	    <activeByDefault>false</activeByDefault>
+        <jdk>1.6</jdk>
+      </activation>
+
+      <repositories>
+	    <!-- 私有库 -->
+        <repository>
+          <id>nexus</id>
+          <url>http://192.168.0.111:8081/nexus/content/groups/public/</url>
+          <releases>
+				<enabled>true</enabled>
+		  </releases>
+		  <snapshots>
+				<enabled>true</enabled>	  
+		  </snapshots>
+        </repository>
+      </repositories>
+
+	  <pluginRepositories>
+	      <!-- 插件库 -->
+		  <pluginRepository>
+			  <id>nexus</id>
+			  <url>http://192.168.0.111:8081/nexus/content/groups/public/</url>
+			  <releases>
+					<enabled>true</enabled>
+			  </releases>
+			  <snapshots>
+					<enabled>true</enabled>	  
+			  </snapshots>
+		  </pluginRepository>
+	  </pluginRepositories>
+    </profile>
+  </profiles>
+
+ 
+  <activeProfiles>
+    <activeProfile>edu</activeProfile>
+  </activeProfiles>
+  
+</settings>
