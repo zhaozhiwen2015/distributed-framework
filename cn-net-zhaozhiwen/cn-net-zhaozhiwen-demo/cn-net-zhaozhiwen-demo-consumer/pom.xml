@@ -1,0 +1,35 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cn.net.zhaozhiwen.demo</groupId>
+    <artifactId>cn-net-zhaozhiwen-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>cn-net-zhaozhiwen-demo-consumer</artifactId>
+  <name>例子模块--模块dubbo客户端</name>
+  <description>提供消费者的一些配置信息，供消费者引入的一个jar模块
+
+作用：定义dto数据转换对象，定义服务接口</description>
+
+
+
+	<dependencies>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>com.github.sgroschupf</groupId>
+				<artifactId>zkclient</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+			</dependency>
+			<dependency>
+            	<groupId>log4j</groupId>
+            	<artifactId>log4j</artifactId>
+        </dependency>
+	</dependencies>
+	
+</project>

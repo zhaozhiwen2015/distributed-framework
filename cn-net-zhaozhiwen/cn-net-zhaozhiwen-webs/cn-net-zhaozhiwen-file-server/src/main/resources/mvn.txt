@@ -1,0 +1,2 @@
+#安装fastdfs jar到本地maven库
+mvn install:install-file -Dfile=D:\fastdfs_client_v1.24.jar -DgroupId=third.jar.fastdfs -DartifactId=fastdfs-client-java -Dversion=1.24 -Dpackaging=jar

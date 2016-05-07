@@ -1,0 +1,23 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cn.net.zhaozhiwen.parent</groupId>
+    <artifactId>cn-net-zhaozhiwen-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>cn.net.zhaozhiwen.demo</groupId>
+  <artifactId>cn-net-zhaozhiwen-demo</artifactId>
+  <packaging>pom</packaging>
+  <name>例子模块 pom文件</name>
+  <description>例子模块 父pom</description>
+  
+  
+  	<modules>
+	    <module>cn-net-zhaozhiwen-demo-consumer</module>
+		<module>cn-net-zhaozhiwen-demo-persistence</module>
+		<module>cn-net-zhaozhiwen-demo-provider</module>
+		<module>cn-net-zhaozhiwen-demo-springdata</module>
+	</modules>
+	
+	
+</project>

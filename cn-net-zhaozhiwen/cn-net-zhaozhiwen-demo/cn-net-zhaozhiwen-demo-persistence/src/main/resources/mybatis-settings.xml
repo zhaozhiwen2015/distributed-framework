@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 允许jdbc生成主键 -->
+	<settings>
+		<setting name="useGeneratedKeys" value="true" />
+	</settings>
+	<typeAliases>
+		<package name="cn.net.zhaozhiwen.demo.persistence.entites" />
+	</typeAliases>
+	
+</configuration>
